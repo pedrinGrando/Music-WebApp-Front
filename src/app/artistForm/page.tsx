@@ -53,7 +53,7 @@ export default function ArtistPage(){
     return (
       <Template loading={loading}>
            <section className="flex flex-col items-center justify-center my-5">
-            <h5 className="mt-3 mb-10 text-3x1 font-extrabold tracking-tight text-gray-900">New image</h5>
+            <h5 className="mt-3 mb-10 text-3x1 font-extrabold tracking-tight text-gray-900">New Artist</h5>
               <form onSubmit={formik.handleSubmit}>
 
                 <div className="grid grid-cols-1">
@@ -61,20 +61,12 @@ export default function ArtistPage(){
                      <InputText    id="name" 
                                    value={formik.values.name} 
                                    onChange={formik.handleChange} 
-                                   placeholder="Type the image´s name"/>
+                                   placeholder="Artist Name"/>
                               <FieldError error={formik.errors.name}  />
                 </div>
 
-                <div className="mt-5 grid grid-cols-1">
-                     <label className="block text-sm font-medium leading-6 text-gray-700">Tags: *</label>
-                     <InputText    id="tags" 
-                                   value={formik.values.tags} 
-                                   onChange={formik.handleChange} 
-                                   placeholder="Type the tags comma separated " />
-                </div>
-
                 <div className="mt-5 grid grid-cols-1 ">
-                     <label className="block text-sm font-medium leading-6 text-gray-700">Image: *</label>
+                     <label className="block text-sm font-medium leading-6 text-gray-700">Profile Image: *</label>
                      <FieldError error={formik.errors.file}  />
                      <div className="mt-2 flex justify-center rounded-lg border-dashed border-gray-900/25 px6">
                            <div className="text-center">

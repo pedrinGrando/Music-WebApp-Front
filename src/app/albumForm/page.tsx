@@ -53,28 +53,36 @@ export default function FormularioPage(){
     return (
       <Template loading={loading}>
            <section className="flex flex-col items-center justify-center my-5">
-            <h5 className="mt-3 mb-10 text-3x1 font-extrabold tracking-tight text-gray-900">New image</h5>
+            <h5 className="mt-3 mb-10 text-3x1 font-extrabold tracking-tight text-gray-900">New Album</h5>
               <form onSubmit={formik.handleSubmit}>
 
                 <div className="grid grid-cols-1">
-                     <label className="block text-sm font-medium leading-6 text-gray-700">Name: *</label>
+                     <label className="block text-sm font-medium leading-6 text-gray-700">Album Title: *</label>
                      <InputText    id="name" 
                                    value={formik.values.name} 
                                    onChange={formik.handleChange} 
-                                   placeholder="Type the image´s name"/>
+                                   placeholder="Album Title"/>
                               <FieldError error={formik.errors.name}  />
                 </div>
 
                 <div className="mt-5 grid grid-cols-1">
-                     <label className="block text-sm font-medium leading-6 text-gray-700">Tags: *</label>
+                     <label className="block text-sm font-medium leading-6 text-gray-700">Release Year: *</label>
                      <InputText    id="tags" 
                                    value={formik.values.tags} 
                                    onChange={formik.handleChange} 
-                                   placeholder="Type the tags comma separated " />
+                                   placeholder="Release Year " />
+                </div>
+
+                <div className="mt-5 grid grid-cols-1">
+                     <label className="block text-sm font-medium leading-6 text-gray-700">Artist Name: *</label>
+                     <InputText    id="tags" 
+                                   value={formik.values.tags} 
+                                   onChange={formik.handleChange} 
+                                   placeholder="Artist Name " />
                 </div>
 
                 <div className="mt-5 grid grid-cols-1 ">
-                     <label className="block text-sm font-medium leading-6 text-gray-700">Image: *</label>
+                     <label className="block text-sm font-medium leading-6 text-gray-700">Cover Image: *</label>
                      <FieldError error={formik.errors.file}  />
                      <div className="mt-2 flex justify-center rounded-lg border-dashed border-gray-900/25 px6">
                            <div className="text-center">
