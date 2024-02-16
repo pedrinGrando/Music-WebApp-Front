@@ -49,16 +49,15 @@ export default function GaleriaPage(){
                 
                 <div className='flex space-x-4'>
                     
-                    <InputText placeholder='Type name' onChange={event => setQuery(event.target.value)} />
-
-                      <Button type='button' style='bg-red-500 hover:bg-blue-300' label='Search' onClick={searchImages}/>
-                    
-                     <Link href="/formulario">
-                     
-                         <Button type='button' style='bg-yellow-500 hover:bg-yellow-300' label='Add new'/>
-
-                     </Link>
+                         <div>
+                          
+                          <h1 className='text-gray-700'>Bem vindo ao Music Listener</h1>
+                          <p className='text-gray-700'>Nosso sistema feito gerenciamentos de Musicas, Artistas e Albums</p>
+                          
+                          </div>     
+          
                 </div>
+
          </section>
 
          <section className='grid grid-cols-4 gap-8'>
