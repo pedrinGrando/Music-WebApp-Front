@@ -58,8 +58,26 @@ class MusicService {
            console.error('Erro ao buscar o ID do artista:', error);
            throw error;
        }
-   
    }
+    //DELETE EM TESTE
+    async deleteAlbum(id: number) {
+        try {
+        const response = await fetch(`http://localhost:8080/albums/${id}`, {
+            method: 'DELETE',
+        });
+    
+        if (response.ok) {
+            console.log('Album deleted successfully');
+        
+        } else {
+            console.error('Failed to delete album');
+            
+        }
+        } catch (error) {
+        console.error('Error deleting album:', error);
+        
+        }
+    };
 }
 
 // REACT HOOK
