@@ -2,13 +2,13 @@ import * as Yup from 'yup'
 
 export interface FormMusicProps {
     nameMusic?: string;
-    durationMinutes?: number;
-    durationSeconds?: number;
+    durationMinutes?: string;
+    durationSeconds?: string;
     album?: string;
-    trackNumber?: number;
+    trackNumber?: string;
 }
 
-export const formScheme: FormMusicProps = { name: '', durationMinutes: 0, durationSeconds: 0, album: '',  trackNumber: 0}
+export const formScheme: FormMusicProps = { nameMusic: '', durationMinutes: 0, durationSeconds: 0, album: '',  trackNumber: 0}
 
 //validar campos
 export const formValidationScheme = Yup.object().shape({

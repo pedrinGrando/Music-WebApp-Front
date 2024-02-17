@@ -6,13 +6,13 @@ class MusicService {
     async buscar(query: string, extension: string) : Promise<Music[]>{
         const url = `${this.baseURL}?query=${query}&extension=${extension}`
         const response = await fetch(url, {
-            method: 'POST',
+            method: 'GET',
             mode: 'cors',
         });
         return await response.json();
     }
 
-    async salvar (dados: FormData) : Promise<string>{
+    async salvar (dados: FormData) {
         const response = await fetch(this.baseURL, {
             method: 'POST',
             mode: 'cors',
@@ -23,7 +23,7 @@ class MusicService {
             
         })
 
-       return response.headers.get('location') ?? ''
+       return response;
     }
 }
 

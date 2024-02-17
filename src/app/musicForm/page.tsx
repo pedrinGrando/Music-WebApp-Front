@@ -25,12 +25,12 @@ export default function FormularioPage(){
          setLoading(true)
 
          const formData = new FormData();
-         formData.append("name", dados.nameMusic ?? ""); 
-         formData.append("durationMinutes", String(dados.durationMinutes ?? ""));
-         formData.append("durationSeconds", String(dados.durationSeconds ?? "")); 
-         formData.append("album", String(dados.album ?? "")); 
-         formData.append("trackNumber", String(dados.trackNumber ?? "")); 
-         
+         formData.append("name", dados.nameMusic ?? "");
+         formData.append("durationMinutes", dados.durationMinutes?.toString() ?? ""); 
+         formData.append("durationSeconds", dados.durationSeconds?.toString() ?? ""); 
+         formData.append("album", dados.album ?? ""); 
+         formData.append("trackNumber", dados.trackNumber?.toString() ?? ""); 
+     
           await service.salvar(formData)
 
           formik.resetForm();
