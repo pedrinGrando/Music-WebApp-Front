@@ -25,3 +25,4 @@ fornecendo uma interface amigável para adicionar, editar e excluir músicas, ar
 ## Como executar
  - npm run dev
  - entrar a url ("http://localhost:3000/home")
+ - dependências node_modules instaladas automaticamente
