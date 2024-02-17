@@ -110,7 +110,7 @@ export default function FormularioPage(){
                     </div>
                    <div className="mt-6 flex items-center justify-end gab-x-6">
                         <Button style="bg-blue-500 hover: bg-blue-300" label="Save" type="submit"/>
-                    <Link href="/galeria">
+                    <Link href="/album">
                         <Button style="bg-red-500 hover: bg-red-300" label="Cancel" type="button"/>
                     </Link>
                    </div>
