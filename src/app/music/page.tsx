@@ -20,8 +20,15 @@ export default function GaleriaPage(){
        const result = await useService.buscar(nameMusic);
        setLoading(false)
 
-       if(!result.length){
+       if(!result.nameMusic?.length){
           notification.notify('No results found!', 'warning')
+       }else{
+        <div>
+             <span>{result.nameMusic}</span>
+            <span>{result.durationMinutes}:{result.durationSeconds}</span>
+            <span>{result.trackNumber}</span>
+            <span>{result.album}</span>
+          </div>
        }
     }
 

@@ -22,7 +22,12 @@ export default function ArtistPage(){
        setLoading(false)
 
        if(!result){
-          notification.notify('No results found!', 'warning')
+          notification.notify('No Artists found!', 'warning')
+       }else{
+        <div>
+             <span>{result.name}</span>
+            <span>{result.profileImage}</span>
+          </div>
        }
     }
 
