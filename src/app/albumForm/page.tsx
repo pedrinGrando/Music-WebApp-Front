@@ -2,7 +2,7 @@
 
 import { Template } from "@/components"
 import { Button, InputText, RenderIf, useNotification, FieldError } from "@/components"
-import { useAlbumService } from '@/resources/image/album.service'
+import { useAlbumService } from '@/resources/album/album.service'
 import { useFormik } from "formik"
 import { FormProps, formScheme, formValidationScheme } from './formScheme'
 import { useState } from "react"
@@ -38,14 +38,14 @@ export default function FormularioPage(){
 
           setLoading(false)
 
-          notification.notify('Upload sent successfully', 'success' )
+          notification.notify('Album Saved', 'success' )
      }
 
     function onFileUpload(event: React.ChangeEvent<HTMLInputElement>){
         
          if (event.target.files){  
           const file = event.target.files[0]
-          formik.setFieldValue("file", file)
+          formik.setFieldValue("coverImage", file)
           const imageURL = URL.createObjectURL(file)
           setImagePreview(imageURL)
         }
@@ -59,7 +59,7 @@ export default function FormularioPage(){
 
                 <div className="grid grid-cols-1">
                      <label className="block text-sm font-medium leading-6 text-gray-700">Album Title: *</label>
-                     <InputText    id="name" 
+                     <InputText    id="title" 
                                    value={formik.values.title} 
                                    onChange={formik.handleChange} 
                                    placeholder="Album Title"/>
@@ -68,7 +68,7 @@ export default function FormularioPage(){
 
                 <div className="mt-5 grid grid-cols-1">
                      <label className="block text-sm font-medium leading-6 text-gray-700">Release Year: *</label>
-                     <InputText    id="tags" 
+                     <InputText    id="releaseYear" 
                                    type="number"
                                    onChange={formik.handleChange} 
                                    placeholder="Release Year " />
@@ -76,7 +76,7 @@ export default function FormularioPage(){
 
                 <div className="mt-5 grid grid-cols-1">
                      <label className="block text-sm font-medium leading-6 text-gray-700">Artist Name: *</label>
-                     <InputText    id="tags" 
+                     <InputText    id="artist" 
                                    value={formik.values.artist} 
                                    onChange={formik.handleChange} 
                                    placeholder="Artist Name " />

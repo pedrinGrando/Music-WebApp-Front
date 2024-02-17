@@ -64,23 +64,28 @@ const Header: React.FC = () =>{
             
            <div className="container mx-auto flex justify-between items-center px-4">
 
+              <Link href="/home">
                  <h1 className="text-yellow font-bold">Music Listener App</h1>
+               </Link>
 
                  <Link href="/music">
-                     
+
                     <h1 className="text-3x1 font-bold">Musics</h1>
+                    <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M9 19C9 20.1046 7.65685 21 6 21C4.34315 21 3 20.1046 3 19C3 17.8954 4.34315 17 6 17C7.65685 17 9 17.8954 9 19ZM9 19V5L21 3V17M21 17C21 18.1046 19.6569 19 18 19C16.3431 19 15 18.1046 15 17C15 15.8954 16.3431 15 18 15C19.6569 15 21 15.8954 21 17ZM9 9L21 7" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
 
                  </Link>
 
                  <Link href="/artist">
                      
                     <h1 className="text-3x1 font-bold">Artists</h1>
+                    <svg fill="#000000" width="64px" height="64px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" d="M12.5449583,5.98310324 C12.1985417,6.57525241 12,7.26444026 12,8 C12,10.209139 13.790861,12 16,12 C16.7422712,12 17.4373203,11.7978187 18.0330812,11.4455225 C16.8338903,10.8860487 15.5806753,9.99488884 14.7928932,9.20710678 C13.9948774,8.40909096 13.1016472,7.16707402 12.5449583,5.98310324 Z M14.0852562,4.48719414 C14.3877487,5.43112584 15.4281841,7.01397051 16.2071068,7.79289322 C16.9733039,8.55909037 18.5287892,9.57630173 19.5217245,9.89832493 C19.8268158,9.33351727 20,8.6869833 20,8 C20,5.790861 18.209139,4 16,4 C15.3063505,4 14.6539391,4.17656148 14.0852562,4.48719414 Z M13.8704322,13.6110971 C12.2697863,13.0032732 10.9967268,11.7302137 10.3889029,10.1295678 L4.29859663,18.8843831 L5.11561694,19.7014034 L13.8704322,13.6110971 Z M16.9127854,13.9310124 L4.88438306,22.2985966 L1.70140337,19.1156169 L10.0689876,7.08721464 C10.5086439,4.2067098 12.9966196,2 16,2 C19.3137085,2 22,4.6862915 22,8 C22,11.0033804 19.7932902,13.4913561 16.9127854,13.9310124 Z"></path> </g></svg>
 
                  </Link>
 
                  <Link href="/album">
                      
                     <h1 className="text-3x1 font-bold">Albums</h1>
+                    <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15 2.19995C19.5645 3.12649 23 7.162 23 11.9999C23 16.8378 19.5645 20.8733 15 21.7999" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M15 9C16.1411 9.28364 17 10.519 17 12C17 13.481 16.1411 14.7164 15 15" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M1 2L11 2L11 22L1 22" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M4 15.5C4 16.3284 3.32843 17 2.5 17C1.67157 17 1 16.3284 1 15.5C1 14.6716 1.67157 14 2.5 14C3.32843 14 4 14.6716 4 15.5Z" fill="#000000"></path> <path d="M4 15.5C4 16.3284 3.32843 17 2.5 17C1.67157 17 1 16.3284 1 15.5C1 14.6716 1.67157 14 2.5 14C3.32843 14 4 14.6716 4 15.5ZM4 15.5V7.6C4 7.26863 4.26863 7 4.6 7H7" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path> </g></svg>
 
                  </Link>
            </div>
@@ -90,9 +95,9 @@ const Header: React.FC = () =>{
 
 const Footer: React.FC = () =>{
     return (
-        <footer className="bg-indigo-950 text-white py-4 mt-8">
+            <footer className="fixed bottom-0 w-full bg-indigo-950 text-white p-4"> 
                 <div className="container mx-auto text-center">
-                     Desenvolvido por Pedro Aluisio
+                <p>&copy; 2024 Pedro Aluisio. Todos os direitos reservados.</p>
                 </div>
         </footer>
     )

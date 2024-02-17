@@ -2,7 +2,7 @@
 
 import { Template } from "@/components"
 import { Button, InputText, RenderIf, useNotification, FieldError } from "@/components"
-import { useAlbumService } from '@/resources/image/album.service'
+import { useAlbumService } from '@/resources/album/album.service'
 import { useFormik } from "formik"
 import { FormProps, formScheme, formValidationScheme } from './formScheme'
 import { useState } from "react"

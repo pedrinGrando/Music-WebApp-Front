@@ -3,8 +3,8 @@ import { Template } from '../../components/Template'
 import { ImageCard } from '../../components/ImageCard'
 import { useState } from 'react'
 import { useNotification } from '@/components'
-import { useAlbumService } from '@/resources/image/album.service' 
-import { Image } from '@/resources/image/album.resource'
+import { useAlbumService } from '@/resources/album/album.service' 
+import { Album } from '@/resources/album/album.resource'
 import { Button } from '@/components/button'
 import Link from 'next/link'
 import { InputText } from '@/components/input'
@@ -12,7 +12,6 @@ import { InputText } from '@/components/input'
 export default function GaleriaPage(){
   
     const useService = useAlbumService();
-    const [images, setImages] = useState<Image[]>([])
     const [query, setQuery] = useState<string>("")
     const [extension, setExtension] = useState<string>("")
     const [loading, setLoading] = useState<boolean>(false)
@@ -22,7 +21,7 @@ export default function GaleriaPage(){
     async function searchImages(){
       setLoading(true)
        const result = await useService.buscar(query, extension);
-       setImages(result);
+
        setLoading(false)
 
        if(!result.length){
