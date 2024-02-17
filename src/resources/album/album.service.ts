@@ -4,7 +4,9 @@ class AlbumService {
     baseURL: string = 'http://localhost:8080/albums';
 
     async buscar(title: string) : Promise<Album>{
-        const url = `${this.baseURL}?title=${title}`
+
+        const id = this.buscarPeloId(title)
+        const url = `${this.baseURL}?id=${id}`
         const response = await fetch(url, {
             method: 'GET',
             mode: 'cors',
@@ -12,7 +14,7 @@ class AlbumService {
         return await response.json();
     }
 
-    async salvar (dados: FormData) : Promise<string>{
+    async salvar (dados: FormData){
         const response = await fetch(this.baseURL, {
             method: 'POST',
             mode: 'cors',
@@ -23,8 +25,42 @@ class AlbumService {
             
         })
 
-       return response.headers.get('location') ?? ''
+       return response;
     }
+
+    async buscarPeloId(title: string): Promise<number> {
+        try {
+          
+           const urlId = `${this.baseURL}?title=${title}`;
+   
+           // Realiza a requisição GET para a API
+           const response = await fetch(urlId, {
+               method: 'GET',
+               mode: 'cors',
+               headers: {
+                   'Content-Type': 'application/json'
+               }
+           });
+   
+           if (!response.ok) {
+               throw new Error('Erro ao buscar o ID do artista');
+           }
+   
+           const data = await response.json();
+           const id = data.id;
+   
+           if (typeof id !== 'number') {
+               throw new Error('ID do artista não encontrado na resposta da API');
+           }
+   
+           return id;
+       } catch (error) {
+
+           console.error('Erro ao buscar o ID do artista:', error);
+           throw error;
+       }
+   
+   }
 }
 
 // REACT HOOK

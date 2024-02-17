@@ -3,16 +3,12 @@ import { Template } from '../../components/Template'
 import { useState } from 'react'
 import { useNotification } from '@/components'
 import { useAlbumService } from '@/resources/album/album.service' 
-import { Button } from '@/components/button'
-import Link from 'next/link'
-import { InputText } from '@/components/input'
+
 
 export default function GaleriaPage(){
   
-    const useService = useAlbumService();
     const [query, setQuery] = useState<string>("")
     const [loading, setLoading] = useState<boolean>(false)
-    const notification  = useNotification();
     
     return (
      <Template loading={loading}>
@@ -21,7 +17,7 @@ export default function GaleriaPage(){
                 
                 <div className='flex space-x-4'>
 
-                          <div>
+                        <div>
                           
                           <h1 className='text-gray-700'>Welcome to Music Listener</h1>
                           <p className='text-gray-700'>Our system manages Songs, Artists and Albums</p>

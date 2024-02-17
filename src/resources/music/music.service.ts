@@ -4,7 +4,9 @@ class MusicService {
     baseURL: string = 'http://localhost:8080/songs';
 
     async buscar(nameMusic: string) : Promise<Music>{
-        const url = `${this.baseURL}?nameMusic=${nameMusic}`
+
+        const id = this.buscarPeloId(nameMusic);
+        const url = `${this.baseURL}?id=${id}`
         const response = await fetch(url, {
             method: 'GET',
             mode: 'cors',
@@ -19,12 +21,45 @@ class MusicService {
             body: dados,
             headers: {
                 'Content-Type': 'application/json'
-            }
-            
+            } 
         })
 
        return response;
     }
+
+    async buscarPeloId(nameMusic: string): Promise<number> {
+        try {
+          
+           const urlId = `${this.baseURL}?nameMusic=${nameMusic}`;
+   
+           // Realiza a requisição GET para a API
+           const response = await fetch(urlId, {
+               method: 'GET',
+               mode: 'cors',
+               headers: {
+                   'Content-Type': 'application/json'
+               }
+           });
+   
+           if (!response.ok) {
+               throw new Error('Erro ao buscar o ID do artista');
+           }
+   
+           const data = await response.json();
+           const id = data.id;
+   
+           if (typeof id !== 'number') {
+               throw new Error('ID do artista não encontrado na resposta da API');
+           }
+   
+           return id;
+       } catch (error) {
+
+           console.error('Erro ao buscar o ID do artista:', error);
+           throw error;
+       }
+   
+   }
 }
 
 // REACT HOOK
