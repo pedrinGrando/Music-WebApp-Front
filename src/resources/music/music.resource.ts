@@ -1,5 +1,5 @@
 export class Music {
-    name?: string;
+    nameMusic?: string;
     durationMinutes?: number;
     durationSeconds?: number;
     album?: string;

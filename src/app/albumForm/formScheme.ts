@@ -1,13 +1,13 @@
 import * as Yup from 'yup'
 
-export interface FormProps {
+export interface FormAlbumProps {
     title: string;
     releaseYear: number;
     coverImage: string;
     artist: string;
 }
 
-export const formScheme: FormProps = { title: '', releaseYear: 0, coverImage: '', artist: '' }
+export const formScheme: FormAlbumProps = { title: '', releaseYear: 0, coverImage: '', artist: '' }
 
 //validar campos
 export const formValidationScheme = Yup.object().shape({

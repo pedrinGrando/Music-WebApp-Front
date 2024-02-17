@@ -1,7 +1,7 @@
 import * as Yup from 'yup'
 
 export interface FormMusicProps {
-    name?: string;
+    nameMusic?: string;
     durationMinutes?: number;
     durationSeconds?: number;
     album?: string;

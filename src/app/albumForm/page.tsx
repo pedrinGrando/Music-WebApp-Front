@@ -4,7 +4,7 @@ import { Template } from "@/components"
 import { Button, InputText, RenderIf, useNotification, FieldError } from "@/components"
 import { useAlbumService } from '@/resources/album/album.service'
 import { useFormik } from "formik"
-import { FormProps, formScheme, formValidationScheme } from './formScheme'
+import { FormAlbumProps, formScheme, formValidationScheme } from './formScheme'
 import { useState } from "react"
 import Link from "next/link"
 
@@ -15,13 +15,13 @@ export default function FormularioPage(){
       const service = useAlbumService();
       const notification = useNotification();
 
-       const formik = useFormik<FormProps>({
+       const formik = useFormik<FormAlbumProps>({
           initialValues: formScheme,
           onSubmit: handleSubmit,
           validationSchema: formValidationScheme
        })
 
-     async function handleSubmit(dados: FormProps){
+     async function handleSubmit(dados: FormAlbumProps){
          setLoading(true)
 
           const formData = new FormData();

@@ -25,7 +25,7 @@ export default function FormularioPage(){
          setLoading(true)
 
          const formData = new FormData();
-         formData.append("name", dados.name ?? ""); 
+         formData.append("name", dados.nameMusic ?? ""); 
          formData.append("durationMinutes", String(dados.durationMinutes ?? ""));
          formData.append("durationSeconds", String(dados.durationSeconds ?? "")); 
          formData.append("album", String(dados.album ?? "")); 
@@ -51,10 +51,9 @@ export default function FormularioPage(){
                 <div className="grid grid-cols-1">
                      <label className="block text-sm font-medium leading-6 text-gray-700">Tittle: *</label>
                      <InputText    id="name" 
-                                   value={formik.values.name} 
+                                   value={formik.values.nameMusic} 
                                    onChange={formik.handleChange} 
                                    placeholder="Music Tittle"/>
-                              <FieldError error={formik.errors.name}  />
                 </div>
 
                 <div className="mt-5 grid grid-cols-1">
