@@ -4,7 +4,7 @@ import { Template } from "@/components"
 import { Button, InputText, RenderIf, useNotification, FieldError } from "@/components"
 import { useAlbumService } from '@/resources/album/album.service'
 import { useFormik } from "formik"
-import { FormProps, formScheme, formValidationScheme } from './formScheme'
+import { FormArtistProps, formScheme, formValidationScheme } from './formScheme'
 import { useState } from "react"
 import Link from "next/link"
 
@@ -15,19 +15,18 @@ export default function ArtistPage(){
       const service = useAlbumService();
       const notification = useNotification();
 
-       const formik = useFormik<FormProps>({
+       const formik = useFormik<FormArtistProps>({
           initialValues: formScheme,
           onSubmit: handleSubmit,
           validationSchema: formValidationScheme
        })
 
-     async function handleSubmit(dados: FormProps){
+     async function handleSubmit(dados: FormArtistProps){
          setLoading(true)
 
           const formData = new FormData();
-          formData.append("file", dados.file)
-          formData.append("name", dados.name)
-          formData.append("tags", dados.tags)
+          formData.append("name", dados.name ?? "");
+          formData.append("profileImage", dados.profileImage ?? ""); 
 
           await service.salvar(formData)
 
@@ -37,14 +36,14 @@ export default function ArtistPage(){
 
           setLoading(false)
 
-          notification.notify('Upload sent successfully', 'success' )
+          notification.notify('Artist Saved!', 'success' )
      }
 
     function onFileUpload(event: React.ChangeEvent<HTMLInputElement>){
         
          if (event.target.files){  
           const file = event.target.files[0]
-          formik.setFieldValue("file", file)
+          formik.setFieldValue("profileImage", file)
           const imageURL = URL.createObjectURL(file)
           setImagePreview(imageURL)
         }
@@ -62,12 +61,10 @@ export default function ArtistPage(){
                                    value={formik.values.name} 
                                    onChange={formik.handleChange} 
                                    placeholder="Artist Name"/>
-                              <FieldError error={formik.errors.name}  />
                 </div>
 
                 <div className="mt-5 grid grid-cols-1 ">
                      <label className="block text-sm font-medium leading-6 text-gray-700">Profile Image: *</label>
-                     <FieldError error={formik.errors.file}  />
                      <div className="mt-2 flex justify-center rounded-lg border-dashed border-gray-900/25 px6">
                            <div className="text-center">
 
@@ -85,7 +82,7 @@ export default function ArtistPage(){
                                    <RenderIf condition={!!imagePreview}>
                                            <img src={imagePreview} width={250} className="rounded-md" />
                                    </RenderIf>
-                                        <input onChange={onFileUpload} type="file" className="sr-only"/>
+                                        <input onChange={onFileUpload} id="profileImage" type="file" className="sr-only"/>
                                      </label>
                                 </div>
                         </div>

@@ -101,14 +101,14 @@ export default function FormularioPage(){
                                    <RenderIf condition={!!imagePreview}>
                                            <img src={imagePreview} width={250} className="rounded-md" />
                                    </RenderIf>
-                                        <input onChange={onFileUpload} type="file" className="sr-only"/>
+                                        <input onChange={onFileUpload} id="coverImage" type="file" className="sr-only"/>
                                      </label>
                                 </div>
                         </div>
                        </div>
 
                     </div>
-                   <div className="mt-6 flex items-center justify-end gab-x-6">
+                   <div className="mt-6 flex items-center justify-center gab-x-3">
                         <Button style="bg-blue-500 hover: bg-blue-300" label="Save" type="submit"/>
                     <Link href="/album">
                         <Button style="bg-red-500 hover: bg-red-300" label="Cancel" type="button"/>

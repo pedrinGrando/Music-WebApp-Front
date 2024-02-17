@@ -1,12 +1,11 @@
 import * as Yup from 'yup'
 
-export interface FormProps {
-    name: string;
-    tags: string;
-    file: string | Blob;
+export interface FormArtistProps {
+    name?: string;
+    profileImage?: string;
 }
 
-export const formScheme: FormProps = { name: '', tags: '', file: '' }
+export const formScheme: FormArtistProps = { name: '', profileImage: '' }
 
 //validar campos
 export const formValidationScheme = Yup.object().shape({
@@ -14,10 +13,6 @@ export const formValidationScheme = Yup.object().shape({
              .trim()
              .required('Name is required')
              .max(50, 'Name has the limit of 50 characteres!')
-    ,tags: Yup.string()
-             .trim()
-             .required('Tags are required')
-             .max(50, 'Tags has the limit of 50 characteres!')
 
     ,file: Yup.mixed<Blob>()
              .required('Select an image to upload')
