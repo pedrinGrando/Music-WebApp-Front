@@ -25,7 +25,7 @@ export default function ArtistPage(){
          setLoading(true)
 
           const formData = new FormData();
-          formData.append("name", dados.name ?? "");
+          formData.append("nome", dados.name ?? "");
           formData.append("profileImage", dados.profileImage ?? ""); 
 
           await service.salvar(formData)

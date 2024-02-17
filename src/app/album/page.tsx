@@ -1,6 +1,5 @@
 'use client'
 import { Template } from '../../components/Template'
-import { ImageCard } from '../../components/ImageCard'
 import { useState } from 'react'
 import { useNotification } from '@/components'
 import { useAlbumService } from '@/resources/album/album.service' 
@@ -40,7 +39,7 @@ export default function GaleriaPage(){
                     
                     <InputText placeholder='Type name' onChange={event => setQuery(event.target.value)} />
 
-                      <Button type='button' style='bg-red-500 hover:bg-blue-300' label='Search'  onClick={searchImages}/>
+                      <Button type='button' style='bg-red-500 hover:bg-blue-300' label='Search' onClick={searchImages}/>
                     
                      <Link href="/albumForm">
                      
@@ -49,8 +48,6 @@ export default function GaleriaPage(){
                      </Link>
 
                 </div>
-
-          
 
          </section>
 
