@@ -3,7 +3,6 @@ import { Template } from '../../components/Template'
 import { useState } from 'react'
 import { useNotification } from '@/components'
 import { useAlbumService } from '@/resources/album/album.service' 
-import { Album } from '@/resources/album/album.resource'
 import { Button } from '@/components/button'
 import Link from 'next/link'
 import { InputText } from '@/components/input'
@@ -12,10 +11,8 @@ export default function GaleriaPage(){
   
     const useService = useAlbumService();
     const [title, setTitle] = useState<string>("")
-    const [extension, setExtension] = useState<string>("")
     const [loading, setLoading] = useState<boolean>(false)
     const notification  = useNotification();
-    const [showForm, setShowForm] = useState(false);
 
     async function searchImages(){
       setLoading(true)

@@ -3,7 +3,6 @@ import { Template } from '../../components/Template'
 import { useState } from 'react'
 import { useNotification } from '@/components'
 import { useArtistService } from '@/resources/artist/artist.service' 
-import { Artist } from '@/resources/artist/artist.resource'
 import { Button } from '@/components/button'
 import Link from 'next/link'
 import { InputText } from '@/components/input'
@@ -12,7 +11,6 @@ export default function ArtistPage(){
   
     const useService = useArtistService();
     const [name, setName] = useState<string>("")
-    const [extension, setExtension] = useState<string>("")
     const [loading, setLoading] = useState<boolean>(false)
     const notification  = useNotification();
 
