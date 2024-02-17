@@ -1,6 +1,5 @@
 'use client'
 import { Template } from '../../components/Template'
-import { ImageCard } from '../../components/ImageCard'
 import { useState } from 'react'
 import { useNotification } from '@/components'
 import { useAlbumService } from '@/resources/album/album.service' 
