@@ -2,7 +2,7 @@
 import { Template } from '../../components/Template'
 import { useState } from 'react'
 import { useNotification } from '@/components'
-import { useAlbumService } from '@/resources/album/album.service' 
+import { useArtistService } from '@/resources/artist/artist.service' 
 import { Artist } from '@/resources/artist/artist.resource'
 import { Button } from '@/components/button'
 import Link from 'next/link'
@@ -10,18 +10,18 @@ import { InputText } from '@/components/input'
 
 export default function ArtistPage(){
   
-    const useService = useAlbumService();
-    const [query, setQuery] = useState<string>("")
+    const useService = useArtistService();
+    const [name, setName] = useState<string>("")
     const [extension, setExtension] = useState<string>("")
     const [loading, setLoading] = useState<boolean>(false)
     const notification  = useNotification();
 
     async function searchImages(){
       setLoading(true)
-       const result = await useService.buscar(query, extension);
+       const result = await useService.buscar(name);
        setLoading(false)
 
-       if(!result.length){
+       if(!result){
           notification.notify('No results found!', 'warning')
        }
     }
@@ -36,7 +36,7 @@ export default function ArtistPage(){
 
                 <h1 className='flex space-x-4 text-gray-700'>Artist Menu</h1>
                     
-                    <InputText placeholder='Type name' onChange={event => setQuery(event.target.value)} />
+                    <InputText placeholder='Type name' onChange={event => setName(event.target.value)} />
 
                       <Button type='button' style='bg-red-500 hover:bg-blue-300' label='Search' onClick={searchImages}/>
                     

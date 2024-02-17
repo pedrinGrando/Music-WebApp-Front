@@ -11,7 +11,7 @@ import { InputText } from '@/components/input'
 export default function GaleriaPage(){
   
     const useService = useAlbumService();
-    const [query, setQuery] = useState<string>("")
+    const [title, setTitle] = useState<string>("")
     const [extension, setExtension] = useState<string>("")
     const [loading, setLoading] = useState<boolean>(false)
     const notification  = useNotification();
@@ -19,12 +19,17 @@ export default function GaleriaPage(){
 
     async function searchImages(){
       setLoading(true)
-       const result = await useService.buscar(query, extension);
+       const result = await useService.buscar(title);
 
        setLoading(false)
 
-       if(!result.length){
+       if(!result.title?.length){
           notification.notify('No results found!', 'warning')
+       } else{
+          <div>
+            <span>{result.releaseYear}</span>
+            <span>{result.title}</span>
+          </div>
        }
     }
 
@@ -37,7 +42,7 @@ export default function GaleriaPage(){
 
                 <h1 className='flex space-x-4 text-gray-700'>Albums Menu</h1>
                     
-                    <InputText placeholder='Type name' onChange={event => setQuery(event.target.value)} />
+                    <InputText placeholder='Type name' onChange={event => setTitle(event.target.value)} />
 
                       <Button type='button' style='bg-red-500 hover:bg-blue-300' label='Search' onClick={searchImages}/>
                     

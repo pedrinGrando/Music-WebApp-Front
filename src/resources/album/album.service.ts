@@ -3,10 +3,10 @@ import { Album } from './album.resource'
 class AlbumService {
     baseURL: string = 'http://localhost:8080/albums';
 
-    async buscar(query: string, extension: string) : Promise<Album[]>{
-        const url = `${this.baseURL}?query=${query}&extension=${extension}`
+    async buscar(title: string) : Promise<Album>{
+        const url = `${this.baseURL}?title=${title}`
         const response = await fetch(url, {
-            method: 'POST',
+            method: 'GET',
             mode: 'cors',
         });
         return await response.json();

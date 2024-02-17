@@ -3,8 +3,8 @@ import { Music } from './music.resource'
 class MusicService {
     baseURL: string = 'http://localhost:8080/songs';
 
-    async buscar(query: string, extension: string) : Promise<Music[]>{
-        const url = `${this.baseURL}?query=${query}&extension=${extension}`
+    async buscar(nameMusic: string) : Promise<Music>{
+        const url = `${this.baseURL}?nameMusic=${nameMusic}`
         const response = await fetch(url, {
             method: 'GET',
             mode: 'cors',

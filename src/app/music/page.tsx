@@ -2,7 +2,7 @@
 import { Template } from '../../components/Template'
 import { useState } from 'react'
 import { useNotification } from '@/components'
-import { useAlbumService } from '@/resources/album/album.service' 
+import { useMusicService } from '@/resources/music/music.service' 
 import { Music } from '@/resources/music/music.resource'
 import { Button } from '@/components/button'
 import Link from 'next/link'
@@ -10,15 +10,14 @@ import { InputText } from '@/components/input'
 
 export default function GaleriaPage(){
   
-    const useService = useAlbumService();
-    const [query, setQuery] = useState<string>("")
-    const [extension, setExtension] = useState<string>("")
+    const useService = useMusicService();
+    const [nameMusic, setNameMusic] = useState<string>("")
     const [loading, setLoading] = useState<boolean>(false)
     const notification  = useNotification();
 
     async function searchImages(){
       setLoading(true)
-       const result = await useService.buscar(query, extension);
+       const result = await useService.buscar(nameMusic);
        setLoading(false)
 
        if(!result.length){
@@ -35,7 +34,7 @@ export default function GaleriaPage(){
 
                 <h1 className='flex space-x-4 text-gray-700'>Musics Menu</h1>
                     
-                    <InputText placeholder='Type name' onChange={event => setQuery(event.target.value)} />
+                    <InputText placeholder='Type name' onChange={event => setNameMusic(event.target.value)} />
 
                       <Button type='button' style='bg-red-500 hover:bg-blue-300' label='Search' onClick={searchImages}/>
                     
