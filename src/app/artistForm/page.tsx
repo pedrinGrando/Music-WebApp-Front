@@ -2,7 +2,7 @@
 
 import { Template } from "@/components"
 import { Button, InputText, RenderIf, useNotification, FieldError } from "@/components"
-import { useImageService } from '@/resources/image/image.service'
+import { useAlbumService } from '@/resources/image/album.service'
 import { useFormik } from "formik"
 import { FormProps, formScheme, formValidationScheme } from './formScheme'
 import { useState } from "react"
@@ -12,7 +12,7 @@ export default function ArtistPage(){
 
       const [loading, setLoading]  = useState<boolean>(false)
       const [imagePreview, setImagePreview] = useState<string>();
-      const service = useImageService();
+      const service = useAlbumService();
       const notification = useNotification();
 
        const formik = useFormik<FormProps>({

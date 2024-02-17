@@ -1,7 +1,7 @@
-import { Image } from './image.resource'
+import { Image } from './album.resource'
 
-class ImageService {
-    baseURL: string = 'http://localhost:8080/v1/images';
+class AlbumService {
+    baseURL: string = 'http://localhost:8080/albums';
 
     async buscar(query: string, extension: string) : Promise<Image[]>{
         const url = `${this.baseURL}?query=${query}&extension=${extension}`
@@ -24,4 +24,4 @@ class ImageService {
 }
 
 // REACT HOOK
-export const useImageService = () => new ImageService();
+export const useAlbumService = () => new AlbumService();

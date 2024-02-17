@@ -3,15 +3,15 @@ import { Template } from '../../components/Template'
 import { ImageCard } from '../../components/ImageCard'
 import { useState } from 'react'
 import { useNotification } from '@/components'
-import { useImageService } from '@/resources/image/image.service' 
-import { Image } from '@/resources/image/image.resource'
+import { useAlbumService } from '@/resources/image/album.service' 
+import { Image } from '@/resources/image/album.resource'
 import { Button } from '@/components/button'
 import Link from 'next/link'
 import { InputText } from '@/components/input'
 
 export default function GaleriaPage(){
   
-    const useService = useImageService();
+    const useService = useAlbumService();
     const [images, setImages] = useState<Image[]>([])
     const [query, setQuery] = useState<string>("")
     const [extension, setExtension] = useState<string>("")
@@ -28,20 +28,7 @@ export default function GaleriaPage(){
           notification.notify('No results found!', 'warning')
        }
     }
-    function renderImageCard(image: Image){
-      return(
-         <ImageCard nome={image.name} 
-                     src={image.url} 
-                     extension={image.extension}
-                     tamanho={image.size} 
-                     dataUpload={image.uploadDate} />
-       )
-    }
- 
-    function renderImageCards(){
-         return images.map(image => renderImageCard(image))
-    }
-
+    
     return (
      <Template loading={loading}>
 
@@ -61,10 +48,6 @@ export default function GaleriaPage(){
          </section>
 
          <section className='grid grid-cols-4 gap-8'>
-
-          {
-            renderImageCards()
-          }
 
          </section>
      </Template>

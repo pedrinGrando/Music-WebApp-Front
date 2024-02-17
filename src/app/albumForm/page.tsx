@@ -2,7 +2,7 @@
 
 import { Template } from "@/components"
 import { Button, InputText, RenderIf, useNotification, FieldError } from "@/components"
-import { useImageService } from '@/resources/image/image.service'
+import { useAlbumService } from '@/resources/image/album.service'
 import { useFormik } from "formik"
 import { FormProps, formScheme, formValidationScheme } from './formScheme'
 import { useState } from "react"
@@ -12,7 +12,7 @@ export default function FormularioPage(){
 
       const [loading, setLoading]  = useState<boolean>(false)
       const [imagePreview, setImagePreview] = useState<string>();
-      const service = useImageService();
+      const service = useAlbumService();
       const notification = useNotification();
 
        const formik = useFormik<FormProps>({
@@ -25,9 +25,10 @@ export default function FormularioPage(){
          setLoading(true)
 
           const formData = new FormData();
-          formData.append("file", dados.file)
-          formData.append("name", dados.name)
-          formData.append("tags", dados.tags)
+          formData.append("title", dados.title)
+          formData.append("releaseYear", dados.releaseYear.toString());
+          formData.append("coverImage", dados.coverImage)
+          formData.append("artist", dados.artist)
 
           await service.salvar(formData)
 
@@ -59,16 +60,16 @@ export default function FormularioPage(){
                 <div className="grid grid-cols-1">
                      <label className="block text-sm font-medium leading-6 text-gray-700">Album Title: *</label>
                      <InputText    id="name" 
-                                   value={formik.values.name} 
+                                   value={formik.values.title} 
                                    onChange={formik.handleChange} 
                                    placeholder="Album Title"/>
-                              <FieldError error={formik.errors.name}  />
+                              
                 </div>
 
                 <div className="mt-5 grid grid-cols-1">
                      <label className="block text-sm font-medium leading-6 text-gray-700">Release Year: *</label>
                      <InputText    id="tags" 
-                                   value={formik.values.tags} 
+                                   type="number"
                                    onChange={formik.handleChange} 
                                    placeholder="Release Year " />
                 </div>
@@ -76,14 +77,13 @@ export default function FormularioPage(){
                 <div className="mt-5 grid grid-cols-1">
                      <label className="block text-sm font-medium leading-6 text-gray-700">Artist Name: *</label>
                      <InputText    id="tags" 
-                                   value={formik.values.tags} 
+                                   value={formik.values.artist} 
                                    onChange={formik.handleChange} 
                                    placeholder="Artist Name " />
                 </div>
 
                 <div className="mt-5 grid grid-cols-1 ">
                      <label className="block text-sm font-medium leading-6 text-gray-700">Cover Image: *</label>
-                     <FieldError error={formik.errors.file}  />
                      <div className="mt-2 flex justify-center rounded-lg border-dashed border-gray-900/25 px6">
                            <div className="text-center">
 
