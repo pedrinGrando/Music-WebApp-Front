@@ -1,13 +1,16 @@
 import { Artist } from './artist.resource'
 
 class ArtistService {
-    baseURL: string = 'http://localhost:8080/artist';
+    baseURL: string = 'http://localhost:8080/artists';
 
     async buscar(query: string, extension: string) : Promise<Artist[]>{
         const url = `${this.baseURL}?query=${query}&extension=${extension}`
         const response = await fetch(url, {
             method: 'POST',
             mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            }
         });
         return await response.json();
     }

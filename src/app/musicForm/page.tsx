@@ -2,9 +2,9 @@
 
 import { Template } from "@/components"
 import { Button, InputText, RenderIf, useNotification, FieldError } from "@/components"
-import { useAlbumService } from '@/resources/album/album.service'
+import { useMusicService } from '@/resources/music/music.service'
 import { useFormik } from "formik"
-import { FormProps, formScheme, formValidationScheme } from './formScheme'
+import { FormMusicProps, formScheme, formValidationScheme } from './formScheme'
 import { useState } from "react"
 import Link from "next/link"
 
@@ -12,23 +12,25 @@ export default function FormularioPage(){
 
       const [loading, setLoading]  = useState<boolean>(false)
       const [imagePreview, setImagePreview] = useState<string>();
-      const service = useAlbumService();
+      const service = useMusicService();
       const notification = useNotification();
 
-       const formik = useFormik<FormProps>({
+       const formik = useFormik<FormMusicProps>({
           initialValues: formScheme,
           onSubmit: handleSubmit,
           validationSchema: formValidationScheme
        })
 
-     async function handleSubmit(dados: FormProps){
+     async function handleSubmit(dados: FormMusicProps){
          setLoading(true)
 
-          const formData = new FormData();
-          formData.append("file", dados.file)
-          formData.append("name", dados.name)
-          formData.append("tags", dados.tags)
-
+         const formData = new FormData();
+         formData.append("name", dados.name ?? ""); 
+         formData.append("durationMinutes", String(dados.durationMinutes ?? ""));
+         formData.append("durationSeconds", String(dados.durationSeconds ?? "")); 
+         formData.append("album", String(dados.album ?? "")); 
+         formData.append("trackNumber", String(dados.trackNumber ?? "")); 
+         
           await service.salvar(formData)
 
           formik.resetForm();
@@ -39,16 +41,6 @@ export default function FormularioPage(){
 
           notification.notify('Upload sent successfully', 'success' )
      }
-
-    function onFileUpload(event: React.ChangeEvent<HTMLInputElement>){
-        
-         if (event.target.files){  
-          const file = event.target.files[0]
-          formik.setFieldValue("file", file)
-          const imageURL = URL.createObjectURL(file)
-          setImagePreview(imageURL)
-        }
-    }
 
     return (
       <Template loading={loading}>
@@ -67,32 +59,33 @@ export default function FormularioPage(){
 
                 <div className="mt-5 grid grid-cols-1">
                      <label className="block text-sm font-medium leading-6 text-gray-700">Duration Minutes: *</label>
-                     <InputText    id="tags" 
-                                   value={formik.values.tags} 
+                     <InputText    id="durationMinutes" 
+                                   value={formik.values.durationMinutes?.toString()} 
                                    onChange={formik.handleChange} 
                                    placeholder="Duration Minutes: " />
                 </div>
 
                 <div className="mt-5 grid grid-cols-1">
                      <label className="block text-sm font-medium leading-6 text-gray-700">Duration Seconds: *</label>
-                     <InputText    id="tags" 
-                                   value={formik.values.tags} 
+                     <InputText    id="durationSeconds" 
+                                   value={formik.values.durationSeconds?.toString()} 
                                    onChange={formik.handleChange} 
                                    placeholder="Duration Seconds: " />
                 </div>
                 
                 <div className="mt-5 grid grid-cols-1">
                      <label className="block text-sm font-medium leading-6 text-gray-700">Album Name: *</label>
-                     <InputText    id="tags" 
-                                   value={formik.values.tags} 
+                     <InputText    id="album" 
+                                   value={formik.values.album} 
                                    onChange={formik.handleChange} 
                                    placeholder="Album Name:" />
                 </div>
                
                 <div className="mt-5 grid grid-cols-1">
                      <label className="block text-sm font-medium leading-6 text-gray-700">Tracking number: *</label>
-                     <InputText    id="tags" 
-                                   value={formik.values.tags} 
+                     <InputText    id="trackNumber" 
+                                   type="number"
+                                   value={formik.values.trackNumber?.toString()} 
                                    onChange={formik.handleChange} 
                                    placeholder="Tracking number:" />
                 </div>

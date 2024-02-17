@@ -1,7 +1,7 @@
 import { Music } from './music.resource'
 
 class MusicService {
-    baseURL: string = 'http://localhost:8080/music';
+    baseURL: string = 'http://localhost:8080/songs';
 
     async buscar(query: string, extension: string) : Promise<Music[]>{
         const url = `${this.baseURL}?query=${query}&extension=${extension}`
