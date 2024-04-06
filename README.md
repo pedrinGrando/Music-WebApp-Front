@@ -1,6 +1,6 @@
 # WebApp de Cadastro de Músicas
 
-Este é um projeto de WebApp desenvolvido por Pedro Aluísio como parte de um processo seletivo. O WebApp permite o cadastro e gerenciamento de músicas, 
+O WebApp permite o cadastro e gerenciamento de músicas, 
 fornecendo uma interface amigável para adicionar, editar e excluir músicas, artistas e albuns do sistema.
 
 ## Funcionalidades
